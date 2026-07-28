@@ -300,13 +300,16 @@ p { margin: 0; }
 .marquee-track {
   display: flex;
   width: max-content;
+  white-space: nowrap;
   animation: marquee 26s linear infinite;
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 500;
   color: var(--muted);
   letter-spacing: 0.02em;
+  will-change: transform;
 }
+.marquee-track span { white-space: nowrap; flex-shrink: 0; }
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }

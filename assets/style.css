@@ -548,13 +548,13 @@ p { margin: 0; }
   transform: rotate(45deg);
   transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
-.timeline-list li:hover,
-.timeline-list li.is-active {
+.timeline-list:hover li,
+.timeline-list.is-active li {
   color: var(--fg);
   font-weight: 500;
 }
-.timeline-list li:hover::before,
-.timeline-list li.is-active::before {
+.timeline-list:hover li::before,
+.timeline-list.is-active li::before {
   background: var(--coral);
   box-shadow: 0 0 10px rgba(255, 107, 87, 0.7);
   transform: rotate(45deg) scale(1.25);

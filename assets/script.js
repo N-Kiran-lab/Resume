@@ -1,12 +1,10 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// tap-to-highlight for timeline bullet points on touch devices
+// tap-to-highlight the whole achievements list as one group on touch devices
 document.querySelectorAll(".timeline-list").forEach((list) => {
   list.querySelectorAll("li").forEach((item) => {
     item.addEventListener("click", () => {
-      const wasActive = item.classList.contains("is-active");
-      list.querySelectorAll("li.is-active").forEach((el) => el.classList.remove("is-active"));
-      if (!wasActive) item.classList.add("is-active");
+      list.classList.toggle("is-active");
     });
   });
 });

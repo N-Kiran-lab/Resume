@@ -14,6 +14,7 @@
   --coral: #ff6b57;
   --violet: #a78bfa;
   --amber: #ffc857;
+  --green: #4ade80;
 
   --radius: 18px;
 }
@@ -178,11 +179,11 @@ p { margin: 0; }
 .pulse-ping {
   position: absolute; inset: 0;
   border-radius: 50%;
-  background: var(--coral);
+  background: var(--green);
   opacity: 0.75;
   animation: ping 1.6s cubic-bezier(0,0,0.2,1) infinite;
 }
-.pulse-core { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+.pulse-core { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
 @keyframes ping {
   75%, 100% { transform: scale(2.4); opacity: 0; }
 }

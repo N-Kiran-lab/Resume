@@ -66,3 +66,44 @@ const statObserver = new IntersectionObserver(
   { threshold: 0.5 }
 );
 statEls.forEach((el) => statObserver.observe(el));
+
+// typewriter tagline
+const taglineEl = document.getElementById("typedTagline");
+const taglinePhrases = [
+  "Every dataset has a story. I help uncover it.",
+  "I ask the right questions before building dashboards and reports.",
+  "Complex problems deserve simple solutions.",
+];
+
+function typeLoop() {
+  const phrase = taglinePhrases[typeLoop.phraseIndex % taglinePhrases.length];
+  const typingSpeed = 55;
+  const deletingSpeed = 30;
+  const pauseAfterType = 1800;
+  const pauseAfterDelete = 400;
+
+  if (!typeLoop.deleting && typeLoop.charIndex <= phrase.length) {
+    taglineEl.textContent = phrase.slice(0, typeLoop.charIndex);
+    typeLoop.charIndex++;
+    if (typeLoop.charIndex > phrase.length) {
+      setTimeout(() => { typeLoop.deleting = true; typeLoop(); }, pauseAfterType);
+      return;
+    }
+    setTimeout(typeLoop, typingSpeed);
+  } else if (typeLoop.deleting && typeLoop.charIndex >= 0) {
+    taglineEl.textContent = phrase.slice(0, typeLoop.charIndex);
+    typeLoop.charIndex--;
+    if (typeLoop.charIndex < 0) {
+      typeLoop.deleting = false;
+      typeLoop.charIndex = 0;
+      typeLoop.phraseIndex++;
+      setTimeout(typeLoop, pauseAfterDelete);
+      return;
+    }
+    setTimeout(typeLoop, deletingSpeed);
+  }
+}
+typeLoop.phraseIndex = 0;
+typeLoop.charIndex = 0;
+typeLoop.deleting = false;
+if (taglineEl) typeLoop();

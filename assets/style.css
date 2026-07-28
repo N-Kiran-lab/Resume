@@ -256,10 +256,10 @@ p { margin: 0; }
   gap: 28px;
 }
 .hero-tagline {
-  max-width: 560px;
+  max-width: 600px;
   min-height: 2.8em;
-  font-size: 1.15rem;
-  line-height: 1.4;
+  font-size: 1.35rem;
+  line-height: 1.45;
   color: var(--muted);
 }
 .typing-cursor {
@@ -578,12 +578,12 @@ p { margin: 0; }
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
-  margin-bottom: 36px;
+  margin-bottom: 8px;
 }
 .contact-meta > div { display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .contact-meta .label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); }
-.contact-meta a:hover { color: var(--coral); }
-.contact-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.meta-value { transition: color 0.2s ease; cursor: default; }
+.meta-value:hover { color: var(--coral); }
 
 /* footer */
 .footer { border-top: 1px solid var(--line); padding: 28px 24px; }

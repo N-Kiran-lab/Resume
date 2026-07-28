@@ -1,5 +1,40 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// seamless marquee: clone the content enough times to cover any viewport width,
+// then animate by exactly one item's width so the loop never shows a gap
+const marqueeTrack = document.getElementById("marqueeTrack");
+
+function setupMarquee() {
+  if (!marqueeTrack) return;
+  const viewport = marqueeTrack.parentElement;
+  const original = marqueeTrack.children[0];
+
+  while (marqueeTrack.children.length > 1) {
+    marqueeTrack.removeChild(marqueeTrack.lastElementChild);
+  }
+
+  const itemWidth = original.getBoundingClientRect().width;
+  const viewportWidth = viewport.getBoundingClientRect().width;
+  const neededWidth = viewportWidth * 2 + itemWidth;
+
+  let totalWidth = itemWidth;
+  while (totalWidth < neededWidth) {
+    marqueeTrack.appendChild(original.cloneNode(true));
+    totalWidth += itemWidth;
+  }
+
+  const pixelsPerSecond = 70;
+  marqueeTrack.style.setProperty("--marquee-distance", `-${itemWidth}px`);
+  marqueeTrack.style.setProperty("--marquee-duration", `${itemWidth / pixelsPerSecond}s`);
+}
+
+setupMarquee();
+let marqueeResizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(marqueeResizeTimer);
+  marqueeResizeTimer = setTimeout(setupMarquee, 200);
+});
+
 // logo click forces a full page reload
 const navLogo = document.getElementById("navLogo");
 navLogo.addEventListener("click", (e) => {

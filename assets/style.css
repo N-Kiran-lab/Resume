@@ -301,7 +301,7 @@ p { margin: 0; }
   display: flex;
   width: max-content;
   white-space: nowrap;
-  animation: marquee 26s linear infinite;
+  animation: marquee var(--marquee-duration, 26s) linear infinite;
   font-family: var(--font-display);
   font-size: 1.3rem;
   font-weight: 500;
@@ -312,7 +312,7 @@ p { margin: 0; }
 .marquee-track span { white-space: nowrap; flex-shrink: 0; }
 @keyframes marquee {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(var(--marquee-distance, -50%)); }
 }
 
 /* ---------- sections ---------- */
@@ -370,16 +370,6 @@ p { margin: 0; }
   background: var(--coral);
   transform: rotate(45deg);
 }
-.about-meta {
-  margin-top: 32px;
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-.about-meta > div { display: flex; flex-direction: column; gap: 4px; }
-.about-meta .label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); }
-.about-meta a:hover { color: var(--coral); }
-
 .stats { display: flex; flex-direction: column; gap: 18px; }
 .stat-card {
   border: 1px solid var(--line);
@@ -508,7 +498,17 @@ p { margin: 0; }
 .contact { text-align: center; overflow: hidden; }
 .contact .section-heading { justify-content: center; }
 .contact-title { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 600; margin: 0 auto 20px; max-width: 700px; line-height: 1.15; }
-.contact-sub { color: var(--muted); font-size: 1.1rem; max-width: 520px; margin: 0 auto 40px; }
+.contact-sub { color: var(--muted); font-size: 1.1rem; max-width: 520px; margin: 0 auto 32px; }
+.contact-meta {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.contact-meta > div { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.contact-meta .label { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted); }
+.contact-meta a:hover { color: var(--coral); }
 .contact-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
 
 /* footer */

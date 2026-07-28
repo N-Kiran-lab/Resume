@@ -1,5 +1,12 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// logo click forces a full page reload
+const navLogo = document.getElementById("navLogo");
+navLogo.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.location.reload();
+});
+
 // nav scroll state + progress bar
 const nav = document.getElementById("nav");
 const progressBar = document.getElementById("progressBar");

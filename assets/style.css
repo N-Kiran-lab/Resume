@@ -115,11 +115,17 @@ p { margin: 0; }
   justify-content: space-between;
 }
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: 0.05em;
+  transition: opacity 0.2s ease;
 }
+.nav-logo:hover { opacity: 0.8; }
+.nav-logo-icon { flex-shrink: 0; }
 .nav-links {
   display: flex;
   align-items: center;
@@ -199,11 +205,15 @@ p { margin: 0; }
 .hero-name {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 1.35rem;
+  font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--amber);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #ff4d4d, var(--coral), var(--amber));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero-title {

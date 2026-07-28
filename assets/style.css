@@ -479,9 +479,9 @@ p { margin: 0; }
   line-height: 1.6;
   margin-bottom: 14px;
   cursor: default;
-  transition: color 0.25s ease, font-weight 0.25s ease;
+  transition: color 0.25s ease;
 }
-.project-row:hover .project-body p { color: var(--fg); font-weight: 500; }
+.project-row:hover .project-body p { color: var(--fg); }
 .tags { display: flex; gap: 8px; flex-wrap: wrap; }
 .tags span {
   font-family: var(--font-mono);
@@ -492,9 +492,9 @@ p { margin: 0; }
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 4px 8px;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  transition: color 0.25s ease, border-color 0.25s ease;
 }
-.tags span:hover { border-color: var(--amber); background: rgba(255,200,87,0.08); transform: translateY(-2px); }
+.project-row:hover .tags span { color: var(--fg); border-color: var(--coral); }
 
 .project-divider {
   margin: 8px 0 -8px;

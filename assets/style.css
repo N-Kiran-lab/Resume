@@ -519,6 +519,32 @@ p { margin: 0; }
 .timeline-content h3 { font-size: 1.2rem; font-weight: 600; margin: 8px 0 4px; }
 .timeline-org { display: block; color: var(--violet); font-size: 0.9rem; margin-bottom: 10px; }
 .timeline-content p { color: var(--muted); line-height: 1.6; max-width: 680px; }
+.timeline-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.timeline-list li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.timeline-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--coral);
+  transform: rotate(45deg);
+}
 
 .certifications {
   margin-top: 56px;

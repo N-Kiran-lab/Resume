@@ -1,12 +1,17 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// black & white theme toggle
-const themeToggle = document.getElementById("themeToggle");
+// light / dark theme toggle (tap the nav logo)
+const navLogo = document.getElementById("navLogo");
 const rootEl = document.documentElement;
-if (localStorage.getItem("bwTheme") === "1") rootEl.classList.add("bw-theme");
-themeToggle.addEventListener("click", () => {
-  rootEl.classList.toggle("bw-theme");
-  localStorage.setItem("bwTheme", rootEl.classList.contains("bw-theme") ? "1" : "0");
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "light" || savedTheme === "dark") {
+  rootEl.setAttribute("data-theme", savedTheme);
+}
+navLogo.addEventListener("click", () => {
+  const isLight = rootEl.getAttribute("data-theme") === "light";
+  const next = isLight ? "dark" : "light";
+  rootEl.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
 });
 
 // tap-to-highlight the whole achievements list as one group on touch devices

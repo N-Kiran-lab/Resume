@@ -1,5 +1,14 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// black & white theme toggle
+const themeToggle = document.getElementById("themeToggle");
+const rootEl = document.documentElement;
+if (localStorage.getItem("bwTheme") === "1") rootEl.classList.add("bw-theme");
+themeToggle.addEventListener("click", () => {
+  rootEl.classList.toggle("bw-theme");
+  localStorage.setItem("bwTheme", rootEl.classList.contains("bw-theme") ? "1" : "0");
+});
+
 // tap-to-highlight the whole achievements list as one group on touch devices
 document.querySelectorAll(".timeline-list").forEach((list) => {
   list.querySelectorAll("li").forEach((item) => {
@@ -44,12 +53,6 @@ window.addEventListener("resize", () => {
   marqueeResizeTimer = setTimeout(setupMarquee, 200);
 });
 
-// logo click forces a full page reload
-const navLogo = document.getElementById("navLogo");
-navLogo.addEventListener("click", (e) => {
-  e.preventDefault();
-  window.location.reload();
-});
 
 // nav scroll state + progress bar
 const nav = document.getElementById("nav");

@@ -27,17 +27,22 @@
 :root[data-theme="light"] {
   --ink: #faf8f5;
   --ink-rgb: 250, 248, 245;
-  --surface: #f1eee7;
+  --surface: #ece7db;
   --card: #ffffff;
-  --line: #e6e1d6;
+  --line: #ece6d9;
+  --card-border: #e7dac4;
+  --timeline-line: #b8b4a9;
   --muted: #6b6760;
   --fg: #1c1c1f;
-  --coral: #e2492f;
+  --coral: #f15a29;
   --violet: #7c4dd6;
   --amber: #b5790a;
-  --card-shadow-sm: 0 1px 2px rgba(28, 28, 20, 0.05);
-  --card-shadow-lg: 0 10px 28px rgba(28, 28, 20, 0.07);
-  --card-shadow-lg-hover: 0 16px 36px rgba(28, 28, 20, 0.1);
+  --btn-cta: #14141a;
+  --btn-cta-hover: #2c2c33;
+  --btn-cta-text: #ffffff;
+  --card-shadow-sm: 0 1px 2px rgba(90, 54, 30, 0.06);
+  --card-shadow-lg: 0 12px 32px rgba(90, 54, 30, 0.1);
+  --card-shadow-lg-hover: 0 18px 40px rgba(90, 54, 30, 0.14);
 }
 
 /* ---------- light-mode-only component overrides ---------- */
@@ -46,15 +51,31 @@
 
 :root[data-theme="light"] .grid-bg {
   background-image:
-    linear-gradient(to right, rgba(28, 28, 20, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(28, 28, 20, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(28, 28, 20, 0.028) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(28, 28, 20, 0.028) 1px, transparent 1px);
 }
 
 :root[data-theme="light"] .blob { opacity: 0.245; }
+:root[data-theme="light"] .hero .blob { opacity: 0.32; }
 :root[data-theme="light"] .blob-c { opacity: 0.07; }
 
+:root[data-theme="light"] .nav {
+  background: rgba(var(--ink-rgb), 0.75);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 0 rgba(90, 54, 30, 0.03), 0 8px 24px rgba(90, 54, 30, 0.05);
+}
+:root[data-theme="light"] .nav.scrolled {
+  background: rgba(var(--ink-rgb), 0.88);
+  box-shadow: 0 1px 0 rgba(90, 54, 30, 0.05), 0 10px 30px rgba(90, 54, 30, 0.07);
+}
+
+:root[data-theme="light"] .hero-title { color: #100f10; }
+:root[data-theme="light"] .hero-photo-ring img { border-color: var(--ink); }
+
+:root[data-theme="light"] .section { padding-top: 128px; padding-bottom: 128px; }
+
 :root[data-theme="light"] .btn-linkedin {
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-border);
   box-shadow: var(--card-shadow-sm), var(--card-shadow-lg);
 }
 :root[data-theme="light"] .btn-linkedin:hover {
@@ -63,24 +84,27 @@
 
 :root[data-theme="light"] .stat-card {
   background: var(--card);
-  border-color: var(--line);
+  border-color: var(--card-border);
   box-shadow: var(--card-shadow-sm), var(--card-shadow-lg);
 }
 :root[data-theme="light"] .stat-card:hover {
-  border-color: #d8d2c2;
+  border-color: #d8b98e;
   box-shadow: var(--card-shadow-sm), var(--card-shadow-lg-hover);
 }
-:root[data-theme="light"] .stat-card::before { display: none; }
+:root[data-theme="light"] .stat-card::before {
+  background: linear-gradient(90deg, transparent, rgba(241, 90, 41, 0.4), transparent);
+}
 :root[data-theme="light"] .stat-icon {
-  background: rgba(226, 73, 47, 0.08);
-  box-shadow: none;
+  background: radial-gradient(circle at 30% 20%, rgba(241, 90, 41, 0.2), rgba(241, 90, 41, 0.07));
+  box-shadow: inset 0 0 0 1px rgba(241, 90, 41, 0.18);
 }
 :root[data-theme="light"] .stat-divider {
-  background: linear-gradient(180deg, transparent, rgba(28, 28, 20, 0.12), transparent);
+  background: linear-gradient(180deg, transparent, rgba(90, 54, 30, 0.15), transparent);
 }
 
 :root[data-theme="light"] .badge {
   background: var(--card);
+  border-color: var(--line);
   box-shadow: var(--card-shadow-sm);
 }
 :root[data-theme="light"] .badge:hover {
@@ -90,19 +114,28 @@
 
 :root[data-theme="light"] .project-row {
   background: var(--card);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-border);
   border-radius: var(--radius);
   padding: 28px;
   margin-bottom: 18px;
   box-shadow: var(--card-shadow-sm), var(--card-shadow-lg);
   transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
-:root[data-theme="light"] .project-row:last-child { border-bottom: 1px solid var(--line); margin-bottom: 0; }
+:root[data-theme="light"] .project-row:last-child { border-bottom: 1px solid var(--card-border); margin-bottom: 0; }
 :root[data-theme="light"] .project-row:hover {
   box-shadow: var(--card-shadow-sm), var(--card-shadow-lg-hover);
   transform: translateY(-2px);
 }
-:root[data-theme="light"] .tags span { background: var(--card); }
+:root[data-theme="light"] .tags span { background: var(--card); border-color: var(--line); }
+
+:root[data-theme="light"] .timeline::before { background: var(--timeline-line); }
+:root[data-theme="light"] .timeline-dot {
+  width: 13px;
+  height: 13px;
+  left: -33px;
+  top: 4px;
+  border-width: 2.5px;
+}
 
 :root[data-theme="light"] .timeline-list:hover li::before,
 :root[data-theme="light"] .timeline-list.is-active li::before {
